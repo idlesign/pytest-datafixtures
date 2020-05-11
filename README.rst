@@ -39,8 +39,9 @@ Data fixtures (files) expected to be stored in ``datafixtures`` directory next t
 
 **Fixtures**
 
-* ``datafix_dir`` - Path object for data fixtures directory from the current test module's directory
-* ``datafix`` - Path object for a file in data fixtures directory with the same name as the current test function
+* ``datafix_dir`` - Path object for data fixtures directory from the current test module's directory.
+* ``datafix`` - Path object for a file in data fixtures directory with the same name as the current test function.
+* ``datafix_read`` - Returns contents of a data fixture by it's name.
 
 
 datafix_dir
@@ -59,6 +60,7 @@ Access data fixtures directory:
         files = list(f'{file.name}' for file in datafix_dir.iterdir())
 
         # Read some fixture as text.
+        # The same as using `datafix_read` fixture (see below).
         filecontent = (datafix_dir / 'expected.html').read_text()
 
         # Or read binary.
@@ -75,6 +77,17 @@ Access a data fixture with test name:
     def test_me(datafix):
         # Read datafixtures/test_me.txt file
         filecontents = datafix.with_suffix('.txt').read_text()
+
+datafix_read
+~~~~~~~~~~~~
+
+Access contents of a data fixture by it's name:
+
+.. code-block:: python
+
+    def test_datafix_read(datafix_read):
+        # Read datafixtures/expected.html file
+        filecontents = datafix_read('expected.html')
 
 
 Requirements

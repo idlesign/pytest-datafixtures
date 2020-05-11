@@ -20,3 +20,8 @@ def test_datafix_dir(datafix_dir):
 def test_datafix(datafix):
     filecontents = datafix.with_suffix('.txt').read_text()
     assert filecontents == 'testit\n'
+
+
+def test_datafix_read(datafix_read):
+    filecontents = datafix_read('test_datafix.txt')
+    assert filecontents == 'testit\n'
