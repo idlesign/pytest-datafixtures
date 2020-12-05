@@ -33,7 +33,7 @@ Data fixtures (files) expected to be stored in ``datafixtures`` directory next t
     |
     |-- subdirectory
     |---- datafixtures
-    |---- test_basic.py
+    |---- test_other.py
 
 
 
