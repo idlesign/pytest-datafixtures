@@ -42,6 +42,7 @@ Data fixtures (files) expected to be stored in ``datafixtures`` directory next t
 * ``datafix_dir`` - Path object for data fixtures directory from the current test module's directory.
 * ``datafix`` - Path object for a file in data fixtures directory with the same name as the current test function.
 * ``datafix_read`` - Returns text contents of a data fixture by it's name.
+* ``datafix_readbin`` - Returns binary contents of a data fixture by it's name.
 
 
 datafix_dir
@@ -78,6 +79,7 @@ Access a data fixture with test name:
         # Read datafixtures/test_me.txt file
         filecontents = datafix.with_suffix('.txt').read_text()
 
+
 datafix_read
 ~~~~~~~~~~~~
 
@@ -91,6 +93,21 @@ Access text contents of a data fixture by it's name:
 
         # Read encoded and represent as an StringIO object.
         encoded_io = datafix_read('test_datafix.txt', encoding='cp1251', io=True)
+
+
+datafix_readbin
+~~~~~~~~~~~~~~~
+
+Access text contents of a data fixture by it's name:
+
+.. code-block:: python
+
+    def test_datafix_read(datafix_readbin):
+        # Read datafixtures/dumped.bin file
+        binary = datafix_readbin('dumped.bin')
+
+        # Read binary and represent as an BytesIO object.
+        bin_io = datafix_readbin('dumped.bin', io=True)
 
 
 

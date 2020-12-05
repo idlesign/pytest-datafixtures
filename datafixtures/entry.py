@@ -1,4 +1,4 @@
-from io import StringIO
+from io import StringIO, BytesIO
 from pathlib import Path
 from typing import Optional, Union
 
@@ -41,3 +41,25 @@ def datafix_read(datafix_dir: Path, request: 'SubRequest'):
         return data
 
     return datafix_read_
+
+
+@pytest.fixture
+def datafix_readbin(datafix_dir: Path, request: 'SubRequest'):
+    """Returns binary from the data fixture by it's name."""
+
+    testname = request.node.name
+
+    def datafix_readbin(
+        fname: str = None,
+        *,
+        io: bool = False
+
+    ) -> Union[bytes, BytesIO]:
+
+        fname = fname or testname
+        data = (datafix_dir / fname).read_bytes()
+        if io:
+            return BytesIO(data)
+        return data
+
+    return datafix_readbin

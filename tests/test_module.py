@@ -28,3 +28,11 @@ def test_datafix_read(datafix_read):
 
     strio = datafix_read('test_datafix.txt', encoding='utf-8', io=True)
     assert strio.read() == 'testit\n'
+
+
+def test_datafix_readbin(datafix_readbin):
+    filecontents = datafix_readbin('fileone')
+    assert filecontents[0] == 208
+
+    binio = datafix_readbin('fileone', io=True)
+    assert binio.read(1) == b'\xd0'
