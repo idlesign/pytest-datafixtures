@@ -41,8 +41,8 @@ Data fixtures (files) expected to be stored in ``datafixtures`` directory next t
 
 * ``datafix_dir`` - Path object for data fixtures directory from the current test module's directory.
 * ``datafix`` - Path object for a file in data fixtures directory with the same name as the current test function.
-* ``datafix_read`` - Returns text contents of a data fixture by it's name.
-* ``datafix_readbin`` - Returns binary contents of a data fixture by it's name.
+* ``datafix_read`` - Returns text contents of a data fixture by name.
+* ``datafix_readbin`` - Returns binary contents of a data fixture by name.
 
 
 datafix_dir
@@ -83,7 +83,7 @@ Access a data fixture with test name:
 datafix_read
 ~~~~~~~~~~~~
 
-Access text contents of a data fixture by it's name:
+Access text contents of a data fixture by name:
 
 .. code-block:: python
 
@@ -98,7 +98,7 @@ Access text contents of a data fixture by it's name:
 datafix_readbin
 ~~~~~~~~~~~~~~~
 
-Access text contents of a data fixture by it's name:
+Access binary contents of a data fixture by name:
 
 .. code-block:: python
 
