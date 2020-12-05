@@ -1,5 +1,6 @@
+from io import StringIO
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
 import pytest
 
@@ -25,8 +26,18 @@ def datafix_read(datafix_dir: Path, request: 'SubRequest'):
 
     testname = request.node.name
 
-    def datafix_read_(fname: str = None, *, encoding: Optional[str] = None) -> str:
+    def datafix_read_(
+        fname: str = None,
+        *,
+        encoding: Optional[str] = None,
+        io: bool = False
+
+    ) -> Union[str, StringIO]:
+
         fname = fname or testname
-        return (datafix_dir / fname).read_text(encoding=encoding)
+        data = (datafix_dir / fname).read_text(encoding=encoding)
+        if io:
+            return StringIO(data)
+        return data
 
     return datafix_read_

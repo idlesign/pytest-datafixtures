@@ -25,3 +25,6 @@ def test_datafix(datafix):
 def test_datafix_read(datafix_read):
     filecontents = datafix_read('test_datafix.txt')
     assert filecontents == 'testit\n'
+
+    strio = datafix_read('test_datafix.txt', encoding='utf-8', io=True)
+    assert strio.read() == 'testit\n'

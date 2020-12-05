@@ -41,7 +41,7 @@ Data fixtures (files) expected to be stored in ``datafixtures`` directory next t
 
 * ``datafix_dir`` - Path object for data fixtures directory from the current test module's directory.
 * ``datafix`` - Path object for a file in data fixtures directory with the same name as the current test function.
-* ``datafix_read`` - Returns contents of a data fixture by it's name.
+* ``datafix_read`` - Returns text contents of a data fixture by it's name.
 
 
 datafix_dir
@@ -81,13 +81,17 @@ Access a data fixture with test name:
 datafix_read
 ~~~~~~~~~~~~
 
-Access contents of a data fixture by it's name:
+Access text contents of a data fixture by it's name:
 
 .. code-block:: python
 
     def test_datafix_read(datafix_read):
         # Read datafixtures/expected.html file
         filecontents = datafix_read('expected.html')
+
+        # Read encoded and represent as an StringIO object.
+        encoded_io = datafix_read('test_datafix.txt', encoding='cp1251', io=True)
+
 
 
 Requirements
