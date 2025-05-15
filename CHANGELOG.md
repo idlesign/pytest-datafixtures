@@ -1,6 +1,6 @@
 # pytest-datafixtures changelog
 
-### Unreleased
+### v1.1.0 [2025-05-16]
 * ++ Add 'datafix_dump' fixture.
 
 ### v1.0.0 [2020-12-05]
