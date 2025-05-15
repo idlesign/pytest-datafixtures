@@ -1,5 +1,8 @@
 # pytest-datafixtures changelog
 
+### Unreleased
+* ++ Add 'datafix_dump' fixture.
+
 ### v1.0.0 [2020-12-05]
 * ++ 'datafix_read' now can represent result as StringIO.
 * ++ Added new 'datafix_readbin' fixture.

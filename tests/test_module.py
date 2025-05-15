@@ -36,3 +36,18 @@ def test_datafix_readbin(datafix_readbin):
 
     binio = datafix_readbin('fileone', io=True)
     assert binio.read(1) == b'\xd0'
+
+
+def test_datafix_dump(datafix_dump, datafix_read, datafix_readbin):
+
+    # default naming
+    assert f"{datafix_dump('sometext')}".endswith('test_datafix_dump')
+    assert datafix_read() == 'sometext'
+
+    # custom naming
+    assert f"{datafix_dump('moretext', 'myfile.txt')}".endswith('myfile.txt')
+    assert datafix_read('myfile.txt') == 'moretext'
+
+    # binary
+    assert datafix_dump(b'somebin', 'mybin.bin')
+    assert datafix_readbin('mybin.bin') == b'somebin'

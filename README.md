@@ -37,6 +37,7 @@ Data fixtures (files) expected to be stored in `datafixtures` directory next to 
 * `datafix` - Path object for a file in data fixtures directory with the same name as the current test function.
 * `datafix_read` - Returns text contents of a data fixture by name.
 * `datafix_readbin` - Returns binary contents of a data fixture by name.
+* `datafix_dump` - Allows data dumping for further usage.
 
 
 #### datafix_dir
@@ -88,10 +89,23 @@ def test_datafix_read(datafix_read):
 Access binary contents of a data fixture by name:
 
 ```python
-    def test_datafix_read(datafix_readbin):
-        # Read datafixtures/dumped.bin file
-        binary = datafix_readbin('dumped.bin')
+def test_datafix_read(datafix_readbin):
+    # Read datafixtures/dumped.bin file
+    binary = datafix_readbin('dumped.bin')
 
-        # Read binary and represent as an BytesIO object.
-        bin_io = datafix_readbin('dumped.bin', io=True)
+    # Read binary and represent as an BytesIO object.
+    bin_io = datafix_readbin('dumped.bin', io=True)
+```
+
+#### datafix_dump
+
+Dump data for later usage as a datafixture:
+
+```python
+def test_datafix_dump(datafix_dump):
+    # Dump text
+    dumped_filepath = datafix_dump('sometext', encoding='cp1251')
+    
+    # Dump binary
+    dumped_filepath = datafix_dump(b'\x12')
 ```

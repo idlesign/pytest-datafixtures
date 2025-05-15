@@ -21,6 +21,33 @@ def datafix(datafix_dir: Path, request: 'SubRequest') -> Path:
 
 
 @pytest.fixture
+def datafix_dump(datafix_dir: Path, request: 'SubRequest'):
+    """Allows dumping data to a datafixtures directory"""
+
+    testname = request.node.name
+
+    def datafix_dump_(
+        data: str | bytes,
+        fname: str = '',
+        *,
+        encoding: str = None,
+    ) -> Path:
+
+        fname = fname or testname
+        target = (datafix_dir / fname)
+
+        if isinstance(data, str):
+            target.write_text(data, encoding=encoding)
+
+        else:
+            target.write_bytes(data)
+
+        return target
+
+    return datafix_dump_
+
+
+@pytest.fixture
 def datafix_read(datafix_dir: Path, request: 'SubRequest'):
     """Returns text from the data fixture by its name."""
 
