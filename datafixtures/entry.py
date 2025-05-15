@@ -1,6 +1,5 @@
 from io import StringIO, BytesIO
 from pathlib import Path
-from typing import Optional, Union
 
 import pytest
 
@@ -56,10 +55,10 @@ def datafix_read(datafix_dir: Path, request: 'SubRequest'):
     def datafix_read_(
         fname: str = None,
         *,
-        encoding: Optional[str] = None,
+        encoding: str | None = None,
         io: bool = False
 
-    ) -> Union[str, StringIO]:
+    ) -> str | StringIO:
 
         fname = fname or testname
         data = (datafix_dir / fname).read_text(encoding=encoding)
@@ -81,7 +80,7 @@ def datafix_readbin(datafix_dir: Path, request: 'SubRequest'):
         *,
         io: bool = False
 
-    ) -> Union[bytes, BytesIO]:
+    ) -> bytes | BytesIO:
 
         fname = fname or testname
         data = (datafix_dir / fname).read_bytes()
