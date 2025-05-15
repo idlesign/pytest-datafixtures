@@ -33,7 +33,6 @@ dev = [
     {include-group = "tests"},
 ]
 docs = [
-    "mkdocs-material",
 ]
 linters = [
     "ruff",

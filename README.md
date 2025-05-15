@@ -5,7 +5,6 @@ https://github.com/idlesign/pytest-datafixtures
 [![PyPI - Version](https://img.shields.io/pypi/v/pytest-datafixtures)](https://pypi.python.org/pypi/pytest-datafixtures)
 [![License](https://img.shields.io/pypi/l/pytest-datafixtures)](https://pypi.python.org/pypi/pytest-datafixtures)
 [![Coverage](https://img.shields.io/coverallsCoverage/github/idlesign/pytest-datafixtures)](https://coveralls.io/r/idlesign/pytest-datafixtures)
-[![Docs](https://img.shields.io/readthedocs/pytest-datafixtures)](https://pytest-datafixtures.readthedocs.io/)
 
 ## Description
 
@@ -15,14 +14,19 @@ Offers fixtures for your tests to simplify data fixtures access.
 Makes use of Python's native `Path` objects.
 
 Data fixtures (files) expected to be stored in `datafixtures` directory next to your test modules:
+
 ```
-    tests
-    |-- datafixtures
-    |-- test_basic.py
-    |
-    |-- subdirectory
-    |---- datafixtures
-    |---- test_other.py
+tests
+|-- datafixtures
+|   |-- mydatafixture.xml
+|   |-- mydata.bin   
+|-- test_basic.py
+|
+|-- subdirectory
+|---- datafixtures
+|     |-- payload.json
+|     |-- cert.cer
+|---- test_other.py
 ```
 
 
