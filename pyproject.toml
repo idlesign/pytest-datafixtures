@@ -1,0 +1,75 @@
+[project]
+name = "pytest-datafixtures"
+dynamic = ["version"]
+description = "Data fixtures for pytest made simple."
+authors = [
+    { name = "Igor Starikov", email = "idlesign@yandex.ru" }
+]
+readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+keywords = ["pytest", "pytest-plugin", "fixtures"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Testing",
+]
+
+[project.urls]
+Homepage = "https://github.com/idlesign/pytest-datafixtures"
+
+[project.entry-points.pytest11]
+datafixtures = "datafixtures.entry"
+
+[dependency-groups]
+dev = [
+    {include-group = "docs"},
+    {include-group = "linters"},
+    {include-group = "tests"},
+]
+docs = [
+    "mkdocs-material",
+]
+linters = [
+    "ruff",
+]
+tests = [
+    "pytest",
+    "pytest-cov",
+    "coverage",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "datafixtures/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["datafixtures"]
+
+[tool.hatch.build.targets.sdist]
+packages = ["datafixtures"]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+]
+
+[tool.coverage.run]
+source = [
+    "datafixtures/",
+]
+
+[tool.coverage.report]
+fail_under = 90.00
+exclude_also = [
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
