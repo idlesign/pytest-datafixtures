@@ -22,7 +22,7 @@ def datafix(datafix_dir: Path, request: 'SubRequest') -> Path:
 
 @pytest.fixture
 def datafix_read(datafix_dir: Path, request: 'SubRequest'):
-    """Returns text from the data fixture by it's name."""
+    """Returns text from the data fixture by its name."""
 
     testname = request.node.name
 
@@ -45,7 +45,7 @@ def datafix_read(datafix_dir: Path, request: 'SubRequest'):
 
 @pytest.fixture
 def datafix_readbin(datafix_dir: Path, request: 'SubRequest'):
-    """Returns binary from the data fixture by it's name."""
+    """Returns binary from the data fixture by its name."""
 
     testname = request.node.name
 
