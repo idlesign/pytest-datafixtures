@@ -50,6 +50,9 @@ build-backend = "hatchling.build"
 [tool.hatch.version]
 path = "datafixtures/__init__.py"
 
+[tool.hatch.build.targets.wheel]
+packages = ["datafixtures"]
+
 [tool.hatch.build.targets.sdist]
 packages = ["datafixtures"]
 
